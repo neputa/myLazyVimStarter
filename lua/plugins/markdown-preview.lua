@@ -1,9 +1,8 @@
 return {
   "iamcco/markdown-preview.nvim",
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  build = "cd app && yarn install",
-  init = function()
-    require("lazy").load({ plugins = { "markdown-preview.nvim" } })
+  ft = { "markdown" },
+  build = function()
     vim.fn["mkdp#util#install"]()
   end,
   keys = {
