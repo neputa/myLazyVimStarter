@@ -14,6 +14,6 @@ map("n", "p", '"0p', { desc = "Paste from yank register", noremap = true })
 map("v", "c", '"_c', { desc = "Change without yanking", noremap = true })
 map("v", "C", '"_C', { desc = "Change to end of line without yanking", noremap = true })
 map("v", "dd", '"_dd', { desc = "Delete line without yanking", noremap = true })
-map("v", "p", '"0p', { desc = "Paste from yank register", noremap = true })
+map("v", "p", '"_dP', { desc = "Retains original clipboard content when pasting", noremap = true })
 
 map("i", "<C-d>", '<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>', { desc = "現在日時", noremap = true })
