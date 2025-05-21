@@ -44,7 +44,7 @@ elseif env.is_vscode or env.is_wsl then
   vim.cmd('autocmd CmdlineLeave * :call system("zenhan.exe 0")')
   -- log("IME auto-off setting complete for VSCode or WSL")
 elseif env.is_windows then
-  vim.o.shell = "cmd.exe"
+  vim.o.shell = "pwsh"
   vim.cmd("autocmd InsertLeave * :call system('zenhan 0')")
   vim.cmd("autocmd CmdlineLeave * :call system('zenhan 0')")
   -- log("IME auto-off setting complete for Windows")
