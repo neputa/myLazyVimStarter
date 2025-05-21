@@ -79,13 +79,6 @@ return {
       direction = "horizontal",
       -- direction = "vertical",
       close_on_exit = true, -- close the terminal window when the process exits
-      shell = function()
-        if vim.fn.has("win32") == 1 then
-          return "pwsh.exe"
-        else
-          return vim.o.shell
-        end
-      end,
       -- shell = vim.o.shell, -- change the default shell
       -- This field is only relevant if direction is set to 'float'
       -- float_opts = {
