@@ -45,9 +45,20 @@ elseif env.is_vscode or env.is_wsl then
   -- log("IME auto-off setting complete for VSCode or WSL")
 elseif env.is_windows then
   vim.o.shell = "pwsh"
-  vim.cmd("autocmd InsertLeave * :call system('zenhan 0')")
-  vim.cmd("autocmd CmdlineLeave * :call system('zenhan 0')")
-  -- log("IME auto-off setting complete for Windows")
+  -- Windows向け：IMEをオフにする関数
+  local function turn_off_ime()
+    -- 非同期に zenhan を実行（失敗しても Neovim の動作を妨げない）
+    vim.fn.jobstart({ "zenhan", "0" }, { detach = true })
+  end
+
+  -- Insertモードを抜けた時にIMEをオフ
+  vim.api.nvim_create_autocmd("InsertLeave", {
+    callback = turn_off_ime,
+  })
+
+  vim.api.nvim_create_autocmd("CmdlineLeave", {
+    callback = turn_off_ime,
+  })
 end
 
 -- markdownの赤い波線を非表示
